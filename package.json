@@ -1,0 +1,76 @@
+{
+  "name": "shop-helper",
+  "version": "2.0.5",
+  "main": "main/main.js",
+  "homepage": "./",
+  "author": "Shop Hepler",
+  "description": "Программа учёта и статистики магазина",
+  "scripts": {
+    "dev": "concurrently \"npm:react\" \"npm:electron\"",
+    "react": "webpack serve --config renderer/webpack.config.js",
+    "electron": "cross-env NODE_ENV=development electron .",
+    "build": "cross-env NODE_ENV=production webpack --config renderer/webpack.config.js",
+    "package": "npm run build && npx electron-builder"
+  },
+  "dependencies": {
+    "async-mutex": "^0.5.0",
+    "better-sqlite3": "8.5.0",
+    "chart.js": "^4.5.0",
+    "jspdf": "^3.0.2",
+    "jspdf-autotable": "^5.0.2",
+    "react": "^18.0.0",
+    "react-chartjs-2": "^5.3.0",
+    "react-dom": "^18.0.0",
+    "react-icons": "^5.5.0",
+    "react-router-dom": "^7.8.2",
+    "sweetalert2": "^11.23.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.24.0",
+    "@babel/preset-env": "^7.24.0",
+    "@babel/preset-react": "^7.24.0",
+    "autoprefixer": "^10.4.0",
+    "babel-loader": "^9.1.0",
+    "concurrently": "^8.2.0",
+    "cross-env": "^7.0.3",
+    "css-loader": "^7.1.2",
+    "electron": "28.2.3",
+    "electron-builder": "^24.13.3",
+    "electron-updater": "^6.6.2",
+    "postcss": "^8.4.0",
+    "postcss-loader": "^7.3.4",
+    "style-loader": "^4.0.0",
+    "tailwindcss": "^3.4.0",
+    "webpack": "^5.90.0",
+    "webpack-cli": "^5.1.0",
+    "webpack-dev-server": "^4.15.0"
+  },
+  "build": {
+    "appId": "com.electron.rgb-shop",
+    "productName": "Shop helper",
+    "files": [
+      "main/",
+      "public/",
+      "package.json"
+    ],
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": "nsis"
+    },
+    "nsis": {
+      "oneClick": true,
+      "allowToChangeInstallationDirectory": false,
+      "createDesktopShortcut": true,
+      "runAfterFinish": true
+    },
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "mAe5tR00",
+        "repo": "RGBShop"
+      }
+    ]
+  }
+}
